@@ -10,7 +10,7 @@ function setNumberOfDice(N) {
     localStorage.setItem('numberOfDice', N);
 }
 
-function callFunc () {
+function rollDice() {
     console.log('Rolling');
     console.log(window.number_of_dice);
 
@@ -19,6 +19,11 @@ function callFunc () {
     // console.log(randomArray);
     randoms = randomArray.map(a => a%6 + 1);
     console.log(randoms);
+    window.dice = randoms;
+
+    var element = document.querySelector("#DICE_HERE");
+    element.innerHTML = randoms.toString();
+
 }
 
 function addDi() {
@@ -33,3 +38,13 @@ function removeDi() {
     }
     console.log(getNumberOfDice());
 }
+
+
+function renderDice() {
+    // show everything in the array of numbers.
+    console.log(window.randoms);
+    return window.randoms.toString();
+}
+
+
+// https://getbutterfly.com/generate-html-list-from-javascript-array/

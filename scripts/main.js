@@ -1,18 +1,35 @@
+(function init() {
+    setNumberOfDice(1);
+})();
+
+function getNumberOfDice() {
+    return localStorage.getItem('numberOfDice');
+}
+
+function setNumberOfDice(N) {
+    localStorage.setItem('numberOfDice', N);
+}
+
 function callFunc () {
     console.log('Rolling');
-    window.number_of_dice = 1;
     console.log(window.number_of_dice);
+
+    var randomArray = new Uint32Array(getNumberOfDice());
+    window.crypto.getRandomValues(randomArray);
+    // console.log(randomArray);
+    randoms = randomArray.map(a => a%6 + 1);
+    console.log(randoms);
 }
 
 function addDi() {
-    window.number_of_dice = window.number_of_dice + 1;
-    console.log(window.number_of_dice);
+    setNumberOfDice(Number.parseInt(getNumberOfDice())+1);
+    console.log(getNumberOfDice());
 }
 
 function removeDi() {
-    var n = window.number_of_dice;
-    if(n > 1) {
-        window.number_of_dice = n-1;
+    var N = Number.parseInt(getNumberOfDice());
+    if(N > 1) {
+        setNumberOfDice(N-1);
     }
-    console.log(window.number_of_dice);
+    console.log(getNumberOfDice());
 }

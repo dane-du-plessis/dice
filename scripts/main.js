@@ -20,9 +20,7 @@ function rollDice() {
     randoms = randomArray.map(a => a%6 + 1);
     console.log(randoms);
     window.dice = randoms;
-
-    var element = document.querySelector("#DICE_HERE");
-    element.innerHTML = randoms.toString();
+    renderDice();
 
 }
 
@@ -42,8 +40,8 @@ function removeDi() {
 
 function renderDice() {
     // show everything in the array of numbers.
-    console.log(window.randoms);
-    return window.randoms.toString();
+    var element = document.querySelector("#DICE_HERE");
+    element.innerHTML = randoms.join("  ");
 }
 
 

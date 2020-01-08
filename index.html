@@ -6,6 +6,12 @@
     <body>
         <h1>Dice</h1>
         <p id="DICE_HERE">Dice...</p>
+
+        <div style="display:none;">
+            <img id="source" src="./images/Die_Faces.svg" width="1280" height="430">
+        </div>
+        <canvas id="canvas"></canvas>
+        <br/>
         <button onclick="rollDice()" class="unselectable">Roll the dice!</button>
         <button onclick="addDi()">+</button>
         <button onclick="removeDi()">-</button>

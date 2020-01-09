@@ -2,6 +2,7 @@ setNumberOfDice(1);
 setDiceSize(111);
 updateDiceCounter();
 reveal(false);
+window.showDice = false;
 
 function getNumberOfDice() {
     return localStorage.getItem('numberOfDice');
@@ -20,6 +21,7 @@ function setDiceSize(a) {
 }
 
 function rollDice() {
+    hideDice(true);
     console.log('Rolling');
     console.log(window.number_of_dice);
 
@@ -29,7 +31,10 @@ function rollDice() {
     randoms = randomArray.map(a => a%6 + 1);
     console.log(randoms);
     window.dice = randoms;
-    renderDice();
+}
+
+function reveal() {
+    hideDice(false);
 }
 
 function addDi() {
@@ -49,7 +54,6 @@ function removeDi() {
 
 function renderDice() {
     // show everything in the array of numbers.
-    updateDiceCounter(window.dice);
     drawDice(window.dice);
 }
 
@@ -61,7 +65,7 @@ function updateDiceCounter() {
 
 function drawDice(dice) {
     const canvas = document.getElementById('canvas');
-    canvas.setAttribute('width', (window.diceSize+10)*dice.length);
+    canvas.setAttribute('width', (window.diceSize+10)*dice.length+ 10);
     const ctx = canvas.getContext('2d');
     dice.forEach((n, index) => {
         drawOne(ctx, n, index);
@@ -80,17 +84,21 @@ function drawOne(ctx, n, index) {
     ctx.drawImage(document.getElementById('source'),
         11 + dx, 6+a+gap, 
         a, a, 
-        (a+10)*index + 10, 0, 
+        (a+10)*index + 10, 10, 
         a, a); 
 }
 
 // https://getbutterfly.com/generate-html-list-from-javascript-array/ -- it's awkward.
 
-function hideDice() {
-    const canvas = document.getElementById('canvas');
-    const context = canvas.getContext('2d');
-    context.clearRect(0, 0, canvas.width, canvas.height);
-
+function hideDice(hideThem) {
+    console.log(window.showDice);
+    if (hideThem) {
+        const canvas = document.getElementById('canvas');
+        const context = canvas.getContext('2d');
+        context.clearRect(0, 0, canvas.width, canvas.height); 
+        return;
+    }
+    drawDice(window.dice);
 }
 
 

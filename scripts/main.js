@@ -1,5 +1,6 @@
 setNumberOfDice(1);
 setDiceSize(111);
+reveal(false);
 
 function getNumberOfDice() {
     return localStorage.getItem('numberOfDice');
@@ -27,7 +28,7 @@ function rollDice() {
     randoms = randomArray.map(a => a%6 + 1);
     console.log(randoms);
     window.dice = randoms;
-    renderDice();
+    // renderDice();
 
 }
 
@@ -56,7 +57,6 @@ function drawDice(dice) {
     const canvas = document.getElementById('canvas');
     canvas.setAttribute('width', (window.diceSize+10)*dice.length);
     const ctx = canvas.getContext('2d');
-
     dice.forEach((n, index) => {
         drawOne(ctx, n, index);
     })
@@ -78,4 +78,13 @@ function drawOne(ctx, n, index) {
         a, a); 
 }
 
-// https://getbutterfly.com/generate-html-list-from-javascript-array/
+// https://getbutterfly.com/generate-html-list-from-javascript-array/ -- it's awkward.
+
+function hideDice() {
+    const canvas = document.getElementById('canvas');
+    const context = canvas.getContext('2d');
+    context.clearRect(0, 0, canvas.width, canvas.height);
+}
+
+
+// https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/button -- on mouse down and up/leave do stuff.

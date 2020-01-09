@@ -13,4 +13,6 @@ body {
   }
 
 
-  canvas{ border: 1px solid rgb(0, 255, 34); }
+canvas{ 
+    border: 1px solid rgb(0, 255, 34);
+}

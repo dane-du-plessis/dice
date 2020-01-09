@@ -1,5 +1,6 @@
 setNumberOfDice(1);
 setDiceSize(111);
+updateDiceCounter();
 reveal(false);
 
 function getNumberOfDice() {
@@ -28,12 +29,12 @@ function rollDice() {
     randoms = randomArray.map(a => a%6 + 1);
     console.log(randoms);
     window.dice = randoms;
-    // renderDice();
-
+    renderDice();
 }
 
 function addDi() {
     setNumberOfDice(Number.parseInt(getNumberOfDice())+1);
+    updateDiceCounter(window.dice);
     console.log(getNumberOfDice());
 }
 
@@ -42,15 +43,20 @@ function removeDi() {
     if(N > 1) {
         setNumberOfDice(N-1);
     }
+    updateDiceCounter(window.dice);
     console.log(getNumberOfDice());
 }
 
-
 function renderDice() {
     // show everything in the array of numbers.
-    var element = document.querySelector("#DICE_HERE");
-    element.innerHTML = randoms.join("  ");
+    updateDiceCounter(window.dice);
     drawDice(window.dice);
+}
+
+
+function updateDiceCounter() {
+    var element = document.querySelector("#N_DICE");
+    element.innerHTML = "Number of dice: " + localStorage.getItem('numberOfDice');
 }
 
 function drawDice(dice) {
@@ -84,6 +90,7 @@ function hideDice() {
     const canvas = document.getElementById('canvas');
     const context = canvas.getContext('2d');
     context.clearRect(0, 0, canvas.width, canvas.height);
+
 }
 
 

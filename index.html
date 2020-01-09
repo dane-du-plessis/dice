@@ -5,17 +5,21 @@
     </head>
     <body>
         <h1>Dice</h1>
-        <p id="DICE_HERE">Dice...</p>
+        <!-- <p id="DICE_HERE">Dice...</p> -->
+        <button onclick="removeDi()">-</button>
+        <span id="N_DICE">Number of Dice: </span> 
+        <button onclick="addDi()">+</button>
+        <br/>
 
         <div style="display:none;">
             <img id="source" src="./images/Die_Faces.svg" width="1280" height="430">
         </div>
-        <canvas id="canvas" width="300" height="111"></canvas>
+        
+        <canvas id="canvas" width="300" height="111" onclick="rollDice()"></canvas>
         <br/>
         <button onclick="rollDice()" class="unselectable">Roll the dice!</button>
         <button onclick="renderDice()" class="unselectable">Reveal</button>
-        <button onclick="addDi()">+</button>
-        <button onclick="removeDi()">-</button>
+
         <script src="scripts/main.js"></script>
     </body>
 </html>

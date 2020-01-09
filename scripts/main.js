@@ -2,7 +2,6 @@ setNumberOfDice(1);
 setDiceSize(111);
 updateDiceCounter();
 reveal(false);
-window.showDice = false;
 
 function getNumberOfDice() {
     return localStorage.getItem('numberOfDice');
@@ -91,7 +90,6 @@ function drawOne(ctx, n, index) {
 // https://getbutterfly.com/generate-html-list-from-javascript-array/ -- it's awkward.
 
 function hideDice(hideThem) {
-    console.log(window.showDice);
     if (hideThem) {
         const canvas = document.getElementById('canvas');
         const context = canvas.getContext('2d');
